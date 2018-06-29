@@ -18,6 +18,6 @@
         "composer/composer": "dev-master"
     },
     "extra": {
-        "class": "EdisonLabs\\MergeYaml\\Plugin",
+        "class": "EdisonLabs\\MergeYaml\\Plugin"
     }
 }
