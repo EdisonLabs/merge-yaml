@@ -1,5 +1,5 @@
 {
-    "name": "EdisonLabs/merge-yaml",
+    "name": "edisonlabs/merge-yaml",
     "type": "composer-plugin",
     "description": "Provides a composer plugin which merges yaml files.",
     "license": "GPL-2.0+",
