@@ -127,7 +127,7 @@ class MergeYaml
      * @return array
      *   The absolute paths to the valid yaml files.
      */
-    protected function getYamlFiles()
+    public function getYamlFiles()
     {
         $ymlFiles = array();
 
