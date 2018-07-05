@@ -87,6 +87,10 @@ class MergeYaml
                 throw new \RuntimeException(sprintf("Unable to parse the file %s as YAML: %s", $filePath, $exception->getMessage()));
             }
 
+            if (!is_array($parsedFile)) {
+              $parsedFile = array();
+            }
+
             $mergedValue = array_merge_recursive($mergedValue, $parsedFile);
         }
 
