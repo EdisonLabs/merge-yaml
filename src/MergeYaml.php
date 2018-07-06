@@ -88,7 +88,7 @@ class MergeYaml
             }
 
             if (!is_array($parsedFile)) {
-              $parsedFile = array();
+                $parsedFile = array();
             }
 
             $mergedValue = array_merge_recursive($mergedValue, $parsedFile);
