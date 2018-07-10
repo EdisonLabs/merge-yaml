@@ -37,7 +37,7 @@ class PluginHandler
      *
      * @var array
      */
-    public $sourcePaths;
+    public $sourcePaths = array();
 
     /**
      * Flag indicating whether the plugin has configuration or not.
@@ -78,12 +78,11 @@ class PluginHandler
         $this->fileNamePatterns = $config['files'];
 
         // Get locations.
-        if (empty($config['locations'])) {
+        if (!is_array($config['locations']) || empty($config['locations'])) {
             throw new \RuntimeException('Please configure merge-yaml locations in your composer.json');
         }
-        foreach ($config['locations'] as $path) {
-            $this->sourcePaths[] = realpath($path);
-        }
+
+        $this->sourcePaths = $config['locations'];
 
         // Get output dir.
         if (empty($config['output-dir'])) {
