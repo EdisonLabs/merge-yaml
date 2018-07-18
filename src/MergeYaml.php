@@ -94,7 +94,7 @@ class MergeYaml
             $mergedValue = array_merge_recursive($mergedValue, $parsedFile);
         }
 
-        return Yaml::dump($mergedValue, PHP_INT_MAX, 2);
+        return Yaml::dump($this->setNullValuesToFalse($mergedValue), PHP_INT_MAX, 2);
     }
 
     /**
@@ -156,5 +156,27 @@ class MergeYaml
         }
 
         return $ymlFiles;
+    }
+
+    /**
+     * Recursive function to set all null values to false in an array.
+     *
+     * @param array $items
+     *   The array to swap null values to false.
+     *
+     * @return array
+     *   The modified $items array.
+     */
+    public function setNullValuesToFalse($items)
+    {
+        if (!is_array($items)) {
+            return $items ? : false;
+        }
+
+        foreach ($items as $key => $value) {
+            $items[$key] = $this->setNullValuesToFalse($value);
+        }
+
+        return $items;
     }
 }
