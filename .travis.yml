@@ -34,3 +34,6 @@ before_script:
 script:
   - phpcs --ignore=vendor/* --standard=Symfony --warning-severity=0 .
   - phpunit --configuration phpunit.xml
+
+after_success:
+  - travis_retry php vendor/bin/php-coveralls
