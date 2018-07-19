@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/EdisonLabs/merge-yaml.svg?branch=1.x)](https://travis-ci.com/EdisonLabs/merge-yaml)
+[![Build Status](https://travis-ci.com/EdisonLabs/merge-yaml.svg?branch=1.x)](https://travis-ci.com/EdisonLabs/merge-yaml) [![Coverage Status](https://coveralls.io/repos/github/EdisonLabs/merge-yaml/badge.svg?branch=1.x)](https://coveralls.io/github/EdisonLabs/merge-yaml?branch=1.x)
 
 # merge-yaml
 
