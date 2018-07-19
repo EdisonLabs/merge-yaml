@@ -41,9 +41,9 @@ class MergeYamlTest extends TestCase
           'test',
         ];
         $this->sourcePaths = [
-            dirname(__FILE__) . '/../../assets',
+            dirname(__FILE__).'/../../assets',
         ];
-        $this->outputDir = dirname(__FILE__) . '/../../assets';
+        $this->outputDir = dirname(__FILE__).'/../../assets';
     }
 
     /**
@@ -101,12 +101,19 @@ class MergeYamlTest extends TestCase
         }
     }
 
+    /**
+     * Gets the expected merged files.
+     *
+     * @return array
+     *   The expected merged files.
+     */
     public function getExpectedMergedFiles()
     {
         $expectedMergedFiles = [];
         foreach ($this->fileNamePatterns as $fileNamePattern) {
-            $expectedMergedFiles[] = $this->outputDir . '/' . $fileNamePattern . '.merge.yml';
+            $expectedMergedFiles[] = $this->outputDir.'/'.$fileNamePattern.'.merge.yml';
         }
+
         return $expectedMergedFiles;
     }
 }
