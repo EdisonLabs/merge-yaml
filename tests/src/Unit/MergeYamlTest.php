@@ -43,7 +43,7 @@ class MergeYamlTest extends TestCase
         $this->sourcePaths = [
             dirname(__FILE__).'/../../assets',
         ];
-        $this->outputDir = dirname(__FILE__).'/../../assets';
+        $this->outputDir = '/tmp/merge-yaml';
     }
 
     /**
