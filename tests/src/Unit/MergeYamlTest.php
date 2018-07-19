@@ -83,7 +83,7 @@ class MergeYamlTest extends TestCase
         $mergeYaml->createMergeFiles();
 
         $expectedMergedFiles = $this->getExpectedMergedFiles();
-        foreach($expectedMergedFiles as $expectedMergedFile) {
+        foreach ($expectedMergedFiles as $expectedMergedFile) {
             $this->assertFileExists($expectedMergedFile);
             $mergedYmlFileContent = file_get_contents($expectedMergedFile);
             $this->assertNotEmpty($mergedYmlFileContent);
