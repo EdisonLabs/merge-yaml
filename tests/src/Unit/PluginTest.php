@@ -4,7 +4,6 @@ namespace EdisonLabs\MergeYaml\Unit;
 
 use EdisonLabs\MergeYaml\Plugin;
 use Composer\Composer;
-use Composer\Config;
 use Composer\Script\ScriptEvents;
 use PHPUnit\Framework\TestCase;
 
@@ -81,13 +80,11 @@ class PluginTest extends TestCase
 
         $io = $this->getMockBuilder('Composer\IO\IOInterface')->getMock();
         $composer = new Composer();
-        $config = new Config();
-        $config->merge($this->defaultConfig);
-        $composer->setConfig($config);
         $composer->setPackage($this->packageMock);
-        $plugin->activate($composer, $io);
+        $plugin->activate($composer, $io, $this->defaultConfig);
         $this->assertInstanceOf('\EdisonLabs\MergeYaml\PluginHandler', $plugin->getPluginHandler());
 
-        $plugin->postCmd($this->eventMock);
+        $plugin->postCmd($this->eventMock, $this->defaultConfig);
+        $this->assertFileExists('/tmp/merge-yaml/test.merge.yml');
     }
 }

@@ -26,9 +26,9 @@ class Plugin implements PluginInterface, EventSubscriberInterface, Capable
     /**
      * {@inheritdoc}
      */
-    public function activate(Composer $composer, IOInterface $io)
+    public function activate(Composer $composer, IOInterface $io, array $configParameters = array())
     {
-        $this->pluginHandler = new PluginHandler($composer, $io);
+        $this->pluginHandler = new PluginHandler($composer, $io, $configParameters);
     }
 
     /**
