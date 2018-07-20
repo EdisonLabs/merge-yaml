@@ -78,7 +78,7 @@ class PluginHandler
         $this->fileNamePatterns = $config['files'];
 
         // Get locations.
-        if (!is_array($config['locations']) || empty($config['locations'])) {
+        if (empty($config['locations']) || !is_array($config['locations'])) {
             throw new \RuntimeException('Please configure merge-yaml locations in your composer.json');
         }
 
