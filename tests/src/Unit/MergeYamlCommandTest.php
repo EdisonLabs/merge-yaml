@@ -3,7 +3,6 @@
 namespace EdisonLabs\MergeYaml\Unit;
 
 use Composer\Composer;
-use Composer\Config;
 use EdisonLabs\MergeYaml\MergeYamlCommand;
 use PHPUnit\Framework\TestCase;
 
@@ -75,12 +74,9 @@ class MergeYamlCommandTest extends TestCase
         $this->assertEquals('Merge yaml files.', $mergeYamlCommand->getDescription());
 
         $composer = new Composer();
-        $config = new Config();
-        $config->merge($this->defaultConfig);
-        $composer->setConfig($config);
         $composer->setPackage($this->packageMock);
         $mergeYamlCommand->setComposer($composer);
-        $mergeYamlCommand->execute($this->inputMock, $this->outputMock);
+        $mergeYamlCommand->execute($this->inputMock, $this->outputMock, $this->defaultConfig);
         $this->assertFileExists('/tmp/merge-yaml/test.merge.yml');
     }
 }

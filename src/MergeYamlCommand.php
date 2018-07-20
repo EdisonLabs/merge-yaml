@@ -17,12 +17,10 @@ class MergeYamlCommand extends BaseCommand
     /**
      * {@inheritdoc}
      */
-    public function execute(InputInterface $input, OutputInterface $output)
+    public function execute(InputInterface $input, OutputInterface $output, array $configParameters = [])
     {
-        $configParameters = array();
-
         $configFile = $input->getOption('config');
-        if ($configFile) {
+        if ($configFile && empty($configParameters)) {
             $filePath = realpath($configFile);
 
             // Checks if the file is valid.
