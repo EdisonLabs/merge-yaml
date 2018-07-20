@@ -14,21 +14,10 @@ use Symfony\Component\Console\Output\OutputInterface;
 class MergeYamlCommand extends BaseCommand
 {
 
-  /**
-   * {@inheritdoc}
-   */
-    protected function configure()
-    {
-        parent::configure();
-        $this->setName('merge-yaml')
-            ->setDefinition($this->createDefinition())
-            ->setDescription('Merge yaml files.');
-    }
-
     /**
      * {@inheritdoc}
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    public function execute(InputInterface $input, OutputInterface $output)
     {
         $configParameters = array();
 
@@ -46,6 +35,17 @@ class MergeYamlCommand extends BaseCommand
 
         $mergeYaml = new PluginHandler($this->getComposer(), $this->getIO(), $configParameters);
         $mergeYaml->createMergeFiles();
+    }
+
+  /**
+   * {@inheritdoc}
+   */
+    protected function configure()
+    {
+        parent::configure();
+        $this->setName('merge-yaml')
+            ->setDefinition($this->createDefinition())
+            ->setDescription('Merge yaml files.');
     }
 
     /**
