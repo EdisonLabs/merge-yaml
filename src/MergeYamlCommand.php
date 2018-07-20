@@ -14,26 +14,13 @@ use Symfony\Component\Console\Output\OutputInterface;
 class MergeYamlCommand extends BaseCommand
 {
 
-  /**
-   * {@inheritdoc}
-   */
-    protected function configure()
-    {
-        parent::configure();
-        $this->setName('merge-yaml')
-            ->setDefinition($this->createDefinition())
-            ->setDescription('Merge yaml files.');
-    }
-
     /**
      * {@inheritdoc}
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    public function execute(InputInterface $input, OutputInterface $output, array $configParameters = [])
     {
-        $configParameters = array();
-
         $configFile = $input->getOption('config');
-        if ($configFile) {
+        if ($configFile && empty($configParameters)) {
             $filePath = realpath($configFile);
 
             // Checks if the file is valid.
@@ -46,6 +33,17 @@ class MergeYamlCommand extends BaseCommand
 
         $mergeYaml = new PluginHandler($this->getComposer(), $this->getIO(), $configParameters);
         $mergeYaml->createMergeFiles();
+    }
+
+  /**
+   * {@inheritdoc}
+   */
+    protected function configure()
+    {
+        parent::configure();
+        $this->setName('merge-yaml')
+            ->setDefinition($this->createDefinition())
+            ->setDescription('Merge yaml files.');
     }
 
     /**
