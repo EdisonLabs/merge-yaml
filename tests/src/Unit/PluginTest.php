@@ -19,7 +19,8 @@ class PluginTest extends TestCase
      */
     protected function tearDown()
     {
-        if (file_exists('/tmp/merge-yaml/test.merge.yml')) {
+        $file = '/tmp/merge-yaml/test.merge.yml';
+        if (file_exists($file)) {
             unlink($file);
         }
     }
