@@ -12,17 +12,6 @@ use PHPUnit\Framework\TestCase;
 class PluginHandlerTest extends TestCase
 {
     /**
-     * {@inheritdoc}
-     */
-    protected function tearDown()
-    {
-        $file = '/tmp/merge-yaml/test.merge.yml';
-        if (file_exists($file)) {
-            unlink($file);
-        }
-    }
-
-    /**
      * A valid composer configuration for the plugin.
      *
      * @var array
@@ -50,6 +39,17 @@ class PluginHandlerTest extends TestCase
         ];
 
         $this->io = $this->getMockBuilder('Composer\IO\IOInterface')->getMock();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function tearDown()
+    {
+        $file = '/tmp/merge-yaml/test.merge.yml';
+        if (file_exists($file)) {
+            unlink($file);
+        }
     }
 
     /**
