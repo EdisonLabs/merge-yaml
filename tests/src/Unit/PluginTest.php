@@ -13,6 +13,43 @@ use PHPUnit\Framework\TestCase;
  */
 class PluginTest extends TestCase
 {
+    /**
+     * A valid composer configuration for the plugin.
+     *
+     * @var array
+     */
+    protected $defaultConfig;
+
+    /**
+     * @var \PHPUnit_Framework_MockObject_MockObject
+     */
+    protected $packageMock;
+
+    /**
+     * @var \PHPUnit_Framework_MockObject_MockObject
+     */
+    protected $eventMock;
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function setUp()
+    {
+        $this->defaultConfig = [
+            'files' => [
+                'test',
+            ],
+            'locations' => [
+                dirname(__FILE__).'/../../assets',
+            ],
+            'output-dir' => '/tmp/merge-yaml',
+        ];
+
+        $this->packageMock = $this->getMockBuilder('Composer\Package\RootPackageInterface')->getMock();
+        $this->eventMock = $this->getMockBuilder('Composer\Script\Event')
+            ->disableOriginalConstructor()
+            ->getMock();
+    }
 
     /**
      * {@inheritdoc}
@@ -45,25 +82,12 @@ class PluginTest extends TestCase
         $io = $this->getMockBuilder('Composer\IO\IOInterface')->getMock();
         $composer = new Composer();
         $config = new Config();
-        $config->merge([
-            'files' => [
-                'test',
-            ],
-            'locations' => [
-                dirname(__FILE__).'/../../assets',
-            ],
-            'output-dir' => '/tmp/merge-yaml',
-        ]);
+        $config->merge($this->defaultConfig);
         $composer->setConfig($config);
-        $package = $this->getMockBuilder('Composer\Package\RootPackageInterface')->getMock();
-        $composer->setPackage($package);
+        $composer->setPackage($this->packageMock);
         $plugin->activate($composer, $io);
         $this->assertInstanceOf('\EdisonLabs\MergeYaml\PluginHandler', $plugin->getPluginHandler());
 
-        $event = $this->getMockBuilder('Composer\Script\Event')
-            ->disableOriginalConstructor()
-            ->getMock();
-        $plugin->postCmd($event);
-        $this->assertFileExists('/tmp/merge-yaml/test.merge.yml');
+        $plugin->postCmd($this->eventMock);
     }
 }
