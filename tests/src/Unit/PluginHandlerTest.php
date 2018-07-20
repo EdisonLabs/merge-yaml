@@ -12,6 +12,16 @@ use PHPUnit\Framework\TestCase;
 class PluginHandlerTest extends TestCase
 {
     /**
+     * {@inheritdoc}
+     */
+    protected function tearDown()
+    {
+        if (file_exists('/tmp/merge-yaml/test.merge.yml')) {
+            unlink($file);
+        }
+    }
+
+    /**
      * A valid composer configuration for the plugin.
      *
      * @var array

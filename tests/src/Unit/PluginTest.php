@@ -13,6 +13,17 @@ use PHPUnit\Framework\TestCase;
  */
 class PluginTest extends TestCase
 {
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function tearDown()
+    {
+        if (file_exists('/tmp/merge-yaml/test.merge.yml')) {
+            unlink($file);
+        }
+    }
+
     /**
      * Tests for EdisonLabs\MergeYaml\Plugin
      */
