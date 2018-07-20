@@ -62,4 +62,15 @@ class Plugin implements PluginInterface, EventSubscriberInterface, Capable
     {
         $this->pluginHandler->createMergeFiles();
     }
+
+    /**
+     * Gets the plugin handler.
+     *
+     * @return \EdisonLabs\MergeYaml\PluginHandler
+     *   The MergeYaml plugin handler.
+     */
+    public function getPluginHandler()
+    {
+        return $this->pluginHandler;
+    }
 }
