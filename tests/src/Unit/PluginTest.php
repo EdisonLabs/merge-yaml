@@ -4,6 +4,7 @@ namespace EdisonLabs\MergeYaml\Unit;
 
 use EdisonLabs\MergeYaml\Plugin;
 use Composer\Composer;
+use Composer\Config;
 use Composer\Script\ScriptEvents;
 use PHPUnit\Framework\TestCase;
 
@@ -44,7 +45,14 @@ class PluginTest extends TestCase
             'output-dir' => '/tmp/merge-yaml',
         ];
 
-        $this->packageMock = $this->getMockBuilder('Composer\Package\RootPackageInterface')->getMock();
+        $this->packageMock = $this->getMockBuilder('Composer\Package\RootPackage')
+            ->disableOriginalConstructor()
+            ->setMethods(['getExtra', 'setExtra'])
+            ->getMock();
+        $this->packageMock->expects($this->once())
+            ->method('getExtra')
+            ->will($this->returnValue(['merge-yaml' => $this->defaultConfig]));
+
         $this->eventMock = $this->getMockBuilder('Composer\Script\Event')
             ->disableOriginalConstructor()
             ->getMock();
@@ -79,12 +87,13 @@ class PluginTest extends TestCase
         $this->assertEquals(['postCmd', -1], $events[ScriptEvents::POST_UPDATE_CMD]);
 
         $io = $this->getMockBuilder('Composer\IO\IOInterface')->getMock();
+
         $composer = new Composer();
         $composer->setPackage($this->packageMock);
-        $plugin->activate($composer, $io, $this->defaultConfig);
+        $plugin->activate($composer, $io);
         $this->assertInstanceOf('\EdisonLabs\MergeYaml\PluginHandler', $plugin->getPluginHandler());
 
-        $plugin->postCmd($this->eventMock, $this->defaultConfig);
+        $plugin->postCmd($this->eventMock);
         $this->assertFileExists('/tmp/merge-yaml/test.merge.yml');
     }
 }
