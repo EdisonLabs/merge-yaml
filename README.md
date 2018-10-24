@@ -16,7 +16,7 @@ Configure the plugin in your composer.json file using for example:
         ],
         "locations": [
             "app/modules",
-            "app/profiles",
+            "app/profiles"
         ],
         "output-dir": "NOT-PUBLIC-FOLDER"
     }
@@ -43,7 +43,7 @@ The content of the configuration file passed in needs to be in this format:
     ],
     "locations": [
         "app/modules",
-        "app/profiles",
+        "app/profiles"
     ],
     "output-dir": "NOT-PUBLIC-FOLDER"
 }
