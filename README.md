@@ -16,7 +16,7 @@ Configure the plugin in your composer.json file using for example:
         ],
         "locations": [
             "app/modules",
-            "app/profiles",
+            "app/profiles"
         ],
         "output-dir": "NOT-PUBLIC-FOLDER"
     }
@@ -35,6 +35,19 @@ You can also use the command `composer merge-yaml` to run the merge process.
 
 Use the option `--config` to specify a config.json file to override the config defined in the `composer.json`: `composer merge-yaml --config=config.json`.
 
+The content of the configuration file passed in needs to be in this format:
+```
+{
+    "files": [
+        "database.sanitize"
+    ],
+    "locations": [
+        "app/modules",
+        "app/profiles"
+    ],
+    "output-dir": "NOT-PUBLIC-FOLDER"
+}
+```
 
 ## Automated Tests and Code Sniffer
 This repository is integrated with [Travis CI](https://travis-ci.com/EdisonLabs/merge-yaml) to perform tests and detect PHP standards violations.
