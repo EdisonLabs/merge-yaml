@@ -159,46 +159,46 @@ class MergeYaml
         return $ymlFiles;
     }
 
-  /**
-   * Alternative to array_merge_recursive without duplicates.
-   *
-   * array_merge_recursive does indeed merge arrays, but it converts values with
-   * duplicate keys to arrays rather than overwriting the value in the first
-   * array with the duplicate value in the second array, as array_merge does.
-   * I.e., with array_merge_recursive, this happens (documented behavior):
-   *
-   * array_merge_recursive(array('key' => 'value 1'),
-   *   array('key' => 'value 2'));
-   * => array('key' => array('value 1', 'value 2'));
-   *
-   * arrayMergeRecursiveDistinct does not change the datatypes of the values
-   * in the arrays. Matching keys' values in the second array overwrite those in
-   * the first array, as is the case with array_merge, i.e.:
-   *
-   * arrayMergeRecursiveDistinct(array('key' => 'value 1'),
-   *   array('key' => 'value 2'));
-   * => array('key' => array('value 2'));
-   *
-   * @param array $array1
-   * @param array $array2
-   *
-   * @return array
-   *
-   * @see https://www.php.net/manual/en/function.array-merge-recursive.php#92195
-   */
-  protected function arrayMergeRecursiveDistinct( array &$array1, array &$array2 )
-  {
-    $merged = $array1;
+    /**
+     * Alternative to array_merge_recursive without duplicates.
+     *
+     * array_merge_recursive does indeed merge arrays, but it converts values with
+     * duplicate keys to arrays rather than overwriting the value in the first
+     * array with the duplicate value in the second array, as array_merge does.
+     * I.e., with array_merge_recursive, this happens (documented behavior):
+     *
+     * array_merge_recursive(array('key' => 'value 1'),
+     *   array('key' => 'value 2'));
+     * => array('key' => array('value 1', 'value 2'));
+     *
+     * arrayMergeRecursiveDistinct does not change the datatypes of the values
+     * in the arrays. Matching keys' values in the second array overwrite those in
+     * the first array, as is the case with array_merge, i.e.:
+     *
+     * arrayMergeRecursiveDistinct(array('key' => 'value 1'),
+     *   array('key' => 'value 2'));
+     * => array('key' => array('value 2'));
+     *
+     * @param array $array1
+     * @param array $array2
+     *
+     * @return array
+     *
+     * @see https://www.php.net/manual/en/function.array-merge-recursive.php#92195
+     */
+    protected function arrayMergeRecursiveDistinct( array &$array1, array &$array2 )
+    {
+        $merged = $array1;
 
-    foreach ($array2 as $key => &$value) {
-      if ( is_array ( $value ) && isset ($merged [$key]) && is_array ($merged [$key])) {
-        $merged [$key] = $this->arrayMergeRecursiveDistinct ($merged [$key], $value);
-      }
-      else {
-        $merged [$key] = $value;
-      }
+        foreach ($array2 as $key => &$value) {
+            if ( is_array ( $value ) && isset ($merged [$key]) && is_array ($merged [$key])) {
+                $merged [$key] = $this->arrayMergeRecursiveDistinct ($merged [$key], $value);
+            }
+            else {
+                $merged [$key] = $value;
+            }
+        }
+
+        return $merged;
     }
-    return $merged;
-  }
-
 }
