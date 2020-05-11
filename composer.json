@@ -9,7 +9,7 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": "true",
+    "prefer-stable": true,
     "require": {
         "composer-plugin-api": "^1.1",
         "symfony/finder": "^4",
