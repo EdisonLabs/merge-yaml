@@ -107,7 +107,7 @@ class MergeYamlTest extends TestCase
      * @return array
      *   The expected merged files.
      */
-    public function getExpectedMergedFiles(): void
+    public function getExpectedMergedFiles(): Array
     {
         $expectedMergedFiles = [];
         foreach ($this->fileNamePatterns as $fileNamePattern) {
