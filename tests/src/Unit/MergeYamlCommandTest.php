@@ -67,7 +67,7 @@ class MergeYamlCommandTest extends TestCase
     /**
      * Tests setting up the plugin correctly.
      */
-    public function testMergeYamlCommand()
+    public function testMergeYamlCommand(): void
     {
         $mergeYamlCommand = new MergeYamlCommand();
         $this->assertEquals('merge-yaml', $mergeYamlCommand->getName());
