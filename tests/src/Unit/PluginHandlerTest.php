@@ -26,7 +26,7 @@ class PluginHandlerTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->defaultConfig = [
             'files' => [
@@ -44,7 +44,7 @@ class PluginHandlerTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $file = '/tmp/merge-yaml/test.merge.yml';
         if (file_exists($file)) {
@@ -55,7 +55,7 @@ class PluginHandlerTest extends TestCase
     /**
      * Tests setting up the plugin correctly.
      */
-    public function testPlugin()
+    public function testPlugin(): void
     {
         $mergeYaml = new PluginHandler(new Composer(), $this->io, $this->defaultConfig);
         $this->assertEquals($this->defaultConfig['files'], $mergeYaml->fileNamePatterns);
@@ -70,7 +70,7 @@ class PluginHandlerTest extends TestCase
     /**
      * Tests the plugin with missing files configuration.
      */
-    public function testMissingFilesConfiguration()
+    public function testMissingFilesConfiguration(): void
     {
         $configParameters = $this->defaultConfig;
         unset($configParameters['files']);
@@ -81,7 +81,7 @@ class PluginHandlerTest extends TestCase
     /**
      * Tests the plugin with missing locations configuration.
      */
-    public function testMissingLocationsConfiguration()
+    public function testMissingLocationsConfiguration(): void
     {
         $configParameters = $this->defaultConfig;
         unset($configParameters['locations']);
@@ -92,7 +92,7 @@ class PluginHandlerTest extends TestCase
     /**
      * Tests the plugin with missing output-dir configuration.
      */
-    public function testMissingOuptutDirConfiguration()
+    public function testMissingOuptutDirConfiguration(): void
     {
         $configParameters = $this->defaultConfig;
         unset($configParameters['output-dir']);

@@ -35,7 +35,7 @@ class MergeYamlTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->fileNamePatterns = [
           'test',
@@ -49,7 +49,7 @@ class MergeYamlTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $expectedMergedFiles = $this->getExpectedMergedFiles();
         foreach ($expectedMergedFiles as $file) {
@@ -62,7 +62,7 @@ class MergeYamlTest extends TestCase
   /**
    * Tests for the MergeYaml class.
    */
-    public function testMergeYaml()
+    public function testMergeYaml(): void
     {
         $mergeYaml = new MergeYaml($this->fileNamePatterns, $this->sourcePaths, $this->outputDir);
 
@@ -107,7 +107,7 @@ class MergeYamlTest extends TestCase
      * @return array
      *   The expected merged files.
      */
-    public function getExpectedMergedFiles()
+    public function getExpectedMergedFiles(): void
     {
         $expectedMergedFiles = [];
         foreach ($this->fileNamePatterns as $fileNamePattern) {

@@ -13,7 +13,7 @@ class CommandProviderTest extends TestCase
     /**
      * Tests for EdisonLabs\MergeYaml\CommandProvider
      */
-    public function testCommandProvider()
+    public function testCommandProvider(): void
     {
         $commandProvider = new CommandProvider();
         $commands = $commandProvider->getCommands();
