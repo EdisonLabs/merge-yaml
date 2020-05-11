@@ -56,7 +56,7 @@ class MergeYamlCommandTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $file = '/tmp/merge-yaml/test.merge.yml';
         if (file_exists($file)) {
