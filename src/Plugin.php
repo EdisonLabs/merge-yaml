@@ -73,5 +73,4 @@ class Plugin implements PluginInterface, EventSubscriberInterface, Capable
     {
         return $this->pluginHandler;
     }
-
 }
