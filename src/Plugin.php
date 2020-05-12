@@ -77,11 +77,11 @@ class Plugin implements PluginInterface, EventSubscriberInterface, Capable
     /**
      * {@inheritdoc}
      */
-    abstract public function deactivate(Composer $composer, IOInterface $io);
+    // abstract public function deactivate(Composer $composer, IOInterface $io);
 
     /**
      * {@inheritdoc}
      */
-    abstract public function uninstall(Composer $composer, IOInterface $io);
+    // abstract public function uninstall(Composer $composer, IOInterface $io);
 
 }
