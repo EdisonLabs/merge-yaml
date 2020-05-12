@@ -74,14 +74,4 @@ class Plugin implements PluginInterface, EventSubscriberInterface, Capable
         return $this->pluginHandler;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    // abstract public function deactivate(Composer $composer, IOInterface $io);
-
-    /**
-     * {@inheritdoc}
-     */
-    // abstract public function uninstall(Composer $composer, IOInterface $io);
-
 }
