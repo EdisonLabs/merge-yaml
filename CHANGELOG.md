@@ -2,7 +2,7 @@
 
 ## Releases
 
-### 2.0.0-alpha1, 2020-XX-XX
+### 2.0.0-alpha1, 2020-05-26
 - Initial 2.x release for drupal 9 composer scaffold compatibility
 - Pinned composer/composer require-dev package to ^1
 - Upgraded Travis PHP to 7.3
