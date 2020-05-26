@@ -36,7 +36,7 @@ class MergeYamlCommandTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->defaultConfig = [
             'files' => [
@@ -56,7 +56,7 @@ class MergeYamlCommandTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $file = '/tmp/merge-yaml/test.merge.yml';
         if (file_exists($file)) {
@@ -67,7 +67,7 @@ class MergeYamlCommandTest extends TestCase
     /**
      * Tests setting up the plugin correctly.
      */
-    public function testMergeYamlCommand()
+    public function testMergeYamlCommand(): void
     {
         $mergeYamlCommand = new MergeYamlCommand();
         $this->assertEquals('merge-yaml', $mergeYamlCommand->getName());

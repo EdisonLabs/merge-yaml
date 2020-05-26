@@ -33,7 +33,7 @@ class PluginTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->defaultConfig = [
             'files' => [
@@ -61,7 +61,7 @@ class PluginTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $file = '/tmp/merge-yaml/test.merge.yml';
         if (file_exists($file)) {
@@ -72,7 +72,7 @@ class PluginTest extends TestCase
     /**
      * Tests for EdisonLabs\MergeYaml\Plugin
      */
-    public function testPlugin()
+    public function testPlugin(): void
     {
         $plugin = new Plugin();
 
