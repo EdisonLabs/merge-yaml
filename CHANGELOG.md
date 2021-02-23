@@ -2,6 +2,9 @@
 
 ## Releases
 
+### 2.0.0, 2021-02-23
+- [EDN-5449] Upgraded to Composer 2.
+
 ### 2.0.0-alpha1, 2020-05-26
 - Initial 2.x release for drupal 9 composer scaffold compatibility
 - Pinned composer/composer require-dev package to ^1
