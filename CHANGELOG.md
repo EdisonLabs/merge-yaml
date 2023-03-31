@@ -2,6 +2,11 @@
 
 ## Releases
 
+### 3.0.beta1, 2023-03-31
+- [EDN-6845] Upgraded symfony/finder to ^6.
+- [EDN-6845] Upgraded symfony/yaml to ^6.
+
+
 ### 2.0.0, 2021-02-23
 - [EDN-5449] Upgraded to Composer 2.
 

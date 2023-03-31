@@ -12,8 +12,8 @@
     "prefer-stable": true,
     "require": {
         "composer-plugin-api": "^2.0",
-        "symfony/finder": "^4",
-        "symfony/yaml": "^4"
+        "symfony/finder": "^6",
+        "symfony/yaml": "^6"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.4.1",
